@@ -1,25 +1,25 @@
 pipeline {
     agent any
 
-    // stages {
-    //     stage('Pull Image from DockerHub') {
-    //         steps {
-    //             echo 'Pulling the Docker image from DockerHub...'
-    //             sh 'docker pull hamzalaabidi/nestjs-web-app:5'
-    //         }
-    //     }
+    stages {
+        stage('Pull Image from DockerHub') {
+            steps {
+                echo 'Pulling the Docker image from DockerHub...'
+                sh 'docker run hamzalaabidi/nestjs-web-app:5'
+            }
+        }
 
-    //     stage('Stop and Remove Existing Container') {
-    //         steps {
-    //             echo 'Stopping and removing any existing container...'
-    //             sh '''
-    //                 if [ $(docker ps -q -f name=nestjs-web-app) ]; then
-    //                     docker stop nestjs-app
-    //                     docker rm nestjs-app
-    //                 fi
-    //             '''
-    //         }
-    //     }
+        stage('Stop and Remove Existing Container') {
+            steps {
+                echo 'Stopping and removing any existing container...'
+                sh '''
+                    if [ $(docker ps -q -f name=nestjs-web-app) ]; then
+                        docker stop nestjs-app
+                        docker rm nestjs-app
+                    fi
+                '''
+            }
+        }
 
         stage('Run New Container') {
             steps {
