@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Stopping and removing any existing container...'
                 sh '''
-                    if [ $(docker ps -q -f name=nestjs-app) ]; then
+                    if [ $(docker ps -q -f name=nestjs-web-app) ]; then
                         docker stop nestjs-app
                         docker rm nestjs-app
                     fi
